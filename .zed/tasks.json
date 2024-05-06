@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Is Windows Style Line Endings",
+    "command": "if file -b Dockerfile | grep -q 'CRLF'; then\n  echo \"File has Windows-style line endings\"\nelse\n  echo \"File does not have Windows-style line endings\"\nfi",
+    "reveal": "always"
+  },
+  {
+    "label": "Does File Start with UTF-8 BOM",
+    "command": "if file -b --mime-encoding Dockerfile | grep -q 'utf-8'; then \n  echo \"File is UTF-8\"\n  if grep -q $'\\xEF\\xBB\\xBF' Dockerfile; then\n    echo \"File starts with UTF-8 BOM\"\n  else\n    echo \"File does not start with UTF-8 BOM\"\n  fi\nelse\n  echo \"File is not UTF-8\"\nfi",
+    "reveal": "always"
+  }
+]
